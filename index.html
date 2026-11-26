@@ -19,6 +19,7 @@
     var msg = document.getElementById('msg');
     msg.textContent = '';
     msg.appendChild(a);
+    window.addEventListener('blur', function () { setTimeout(window.close, 300); });
   } else {
     document.getElementById('msg').textContent = 'No note path given. Use #<url-encoded vault path>.';
   }
