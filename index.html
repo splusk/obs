@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>Open in Obsidian</title>
+</head>
+<body>
+<p id="msg">Opening Obsidian…</p>
+<script>
+  var file = location.hash.slice(1);
+  var vault = new URLSearchParams(location.search).get('vault') || 'Kry';
+  if (file) {
+    var uri = 'obsidian://open?vault=' + encodeURIComponent(vault) + '&file=' + file;
+    location.replace(uri);
+    var a = document.createElement('a');
+    a.href = uri;
+    a.textContent = 'Open in Obsidian';
+    var msg = document.getElementById('msg');
+    msg.textContent = '';
+    msg.appendChild(a);
+  } else {
+    document.getElementById('msg').textContent = 'No note path given. Use #<url-encoded vault path>.';
+  }
+</script>
+</body>
+</html>
